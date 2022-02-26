@@ -33,3 +33,33 @@ const saveObj = () => {
    console.log(JSON.parse(localStorage.getItem('obj1', ('obj1'))))
 }
 document.querySelector('.save-obj').addEventListener('click', saveObj);
+
+const saveArr = () => {
+   let arr = ['item1', 100, false, 'string2'];
+   localStorage.setItem('arr1', JSON.stringify(arr));
+   // console.log(localStorage.setItem('arr1', JSON.stringify(arr)))
+}
+document.querySelector('.save-arr').addEventListener('click', saveArr);
+
+const renderArr = () => {
+   let list = document.querySelector('.arr-list');
+   let correntArr = JSON.parse(localStorage.getItem('arr1'));
+   correntArr.forEach((item) => {
+      list.innerHTML += `<li>${item}</li>`
+   })
+}
+document.querySelector('.get-arr').addEventListener('click', renderArr);
+
+const addElement = () => {
+   let correntArr = JSON.parse(localStorage.getItem('arr1'));
+   correntArr.push(counter);
+   localStorage.setItem('arr1', JSON.stringify(correntArr));
+}
+document.querySelector('.add-arr').addEventListener('click', addElement)
+
+
+localStorage.setItem('random-str', false);
+// localStorage.removeItem('random-str')
+
+// localStorage.clear()
+
